@@ -6,8 +6,11 @@ url:                "http://localhost:4000"
 baseurl:            /DimitriosChamzas
 
 github_username: jimas95
-LinkedIn_username: Dimitris Chamzas
+LinkedIn_username: dimitris-chamzas-365357197
 facebook_username: Dimitris Chamzas
+google_scholar_username : citations?hl=en&user=dG1jUx0AAAAJ
+orcid_username: 0000-0002-4375-5281
+
 
 # File structure settings
 image_path:         /public/images
