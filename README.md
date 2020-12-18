@@ -17,3 +17,5 @@ Build : `ekyll build --watch`
 Open server : `jekyll serve`
 link : `http://localhost:4000/DimitriosChamzas/` or `http://127.0.0.1:4000/DimitriosChamzas/`
 
+public link : `https://jimas95.github.io/portfolio/`
+
