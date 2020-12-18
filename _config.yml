@@ -1,12 +1,17 @@
 # Site settings
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site
+title:              Dimitrios Chamzas - Portfolio
+email:              chamzas95@gmail.com
+description:        "Dimitris Chamzas - Portfolio"
+url:                "http://localhost:4000"
+baseurl:            /DimitriosChamzas
 
-twitter_username:
-github_username:
+github_username: jimas95
+LinkedIn_username: Dimitris Chamzas
+facebook_username: Dimitris Chamzas
+
+# File structure settings
+image_path:         /public/images
 
 # Build settings
-markdown: kramdown
+markdown:           kramdown
+permalink:          pretty
