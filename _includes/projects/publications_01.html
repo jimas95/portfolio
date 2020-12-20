@@ -1,0 +1,77 @@
+ <!-- Modal 1 -->
+ <div class="portfolio-modal modal fade modal-xl" id="paper1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="text-center modal-title">3D Augmented Reality Tangible User Interface using Commodity Hardware</h3>
+                <h4 class="text-center">Augmented Reality | OpenCV  |  Unity  |  Computer Vision  | 3D Tracking | 3D Registration | </h4>
+            </div>
+           
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p></p>
+                <h4>This project is part of my thesis. It was published as a paper at conference GRAPP 2020. </h4> 
+                <p class="text-center">
+                    <!-- <img class="center" src="img/portfolio/paper_01/video.gif" class="img-responsive" alt="The Baxter in action" style="width:80%"> -->
+                    <iframe class="center" width="420" height="315" src="https://www.youtube.com/embed/OyU4GOLoXnA">  </iframe>
+
+                </p>
+                <p > <b>Abstract:</b></p>  
+                <p class="text-center"></p>
+                    During the last years, the emerging field of Augmented & Virtual Reality (AR-VR) has seen tremendous growth.
+                    An interface that has also become very popular for the AR systems is the tangible interface or passive-haptic
+                    interface. Specifically, an interface where users can manipulate digital information with input devices that are
+                    physical objects. This work presents a low cost Augmented Reality system with a tangible interface that offers
+                    interaction between the real and the virtual world. The system estimates in real-time the 3D position of a small
+                    colored ball (input device), it maps it to the 3D virtual world and then uses it to control the AR application
+                    that runs in a mobile device. Using the 3D position of our “input” device, it allows us to implement more
+                    complicated interactivity compared to a 2D input device. Finally, we present a simple, fast and robust algorithm
+                    that can estimate the corners of a convex quadrangle. The proposed algorithm is suitable for the fast registration
+                    of markers and significantly improves performance compared to the state of the art.</p>    
+                    <p class="text-center">
+                        <img class="center" src="img/portfolio/paper_01/hardware.png" class="img-responsive" alt="Hardware" style="width:80%">
+                    </p>
+                    <p class="text-center">Hardware</p>
+                    <p>The first subsystem implements Tracking and Display, and it contains an Android mobile phone (Xiaomi Red-mi Note 6 pro) running a 3D Unity Engine with Vuforia where by utilizing an ”image target” the front camera projects the augmented environment on our screen.
+                        The second subsystem implements the 3D tangible AR User’s interface (TUI) and it consists of a
+                        Raspberry Pi 4 with an RGB Raspberry Camera and a depth camera (Structure Sensor) housed in a home-
+                        made 3D-printed case.
+                    </p>
+                    <p class="text-center">
+                        <img class="center" src="img/portfolio/paper_01/setup.png" class="img-responsive" alt="The AR system" style="width:80%">
+                    </p>
+                    <p class="text-center">The AR system</p>
+                    <p>An illustrative example of the setup of our system in the real world is shown in the image above. As it was described our system is composed of two different
+                        subsystems. The first subsystem, the mobile phone, is 
+                        responsible for the visualization of the Augmented Reality environment. The virtual objects are overlaid on a
+                        predefined target image printed on an A4 paper. Thus the mobile phone is responsible for graphics rendering,
+                        tracking, marker calibration, and registration as well as for merging virtual images with views of the real
+                        world. The second subsystem is attached to a ”desk lamb arm”, and faces the target image. This system is responsible to align the images from the two cameras,
+                        locate the 3D coordinates of a predefined physical object(yellow ball), namely the AR - POINTER , transform
+                        its XYZ coordinates to Unity coordinates and send them to mobile via WiFi. The physical pointer, which
+                        has a unique color, is localized via an adaptive color and distance camera registration algorithm. The physical AR - POINTER has its virtual counterpart in the AR
+                        world, a virtual red ball, which represents the real 3D input device. Thus, by moving the real AR - POINTER
+                        in the real 3D world, we move the virtual AR - POINTER in the virtual world, interacting with other virtual objects of the application. This is a tangible interface,
+                        which gives to the user the perception of a real object interacting with the virtual world.
+                    </p>
+
+                
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <p></p>
+                    <form action="https://arxiv.org/pdf/2003.01092.pdf" method="get" target="_blank">
+                        <button type="submit" class="btn btn-primary">Full paper</button>
+                     </form>
+                     <p></p>
+                    <button type="button" class="btn btn-primary center" data-dismiss="modal">Close Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
