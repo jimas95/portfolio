@@ -1,0 +1,82 @@
+<!-- Modal 2 -->
+<div class="portfolio-modal modal fade modal-xl" id="turtle_slam" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="text-center modal-title">TurtleBot SLAM</h3>
+                <h4 class="text-center">Python  |  ROS  |  SLAM  | Autonomous Exploration | AMCL | Frontier Exploration|</h4>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h3>Description</h3>       
+                <p>In this project, The goal is to use the turtlebot to map an 
+                    environment and then navigate within the map using the slam_toolbox. Also an autonomus exploration 
+                    algorithm was implemented for the creation of the map.</p>
+                <p></p>
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/turtle_slam/map.png" class="img-responsive" alt="map.png" style="width:80%"></p>
+                <p class="text-center">Fig. 1 mapping of Gazebo House</p>
+                <p></p>
+
+
+                <h3>Overview</h3>       
+                <p> The basic idea is that we are navigating the turtleBot in order to explore and create a map of the environment.
+                    While we are using the amcl algorithm for SLAM. After we have created the map we are able to navigate free in the environment with optimal paths.
+                Another implementation was made where we used the <a href="https://ieeexplore.ieee.org/document/613851">Frontier Exploration</a>  to create an autonomous exploration algorithm. The Algorithm navigates by itself and stops when no more frontiers are found 
+                in the environment. Experiments were made using both the Gazebo Simulator and the actual turtleBot.</p>
+
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/turtle_slam/SLAM.gif" class="img-responsive" alt="slam.gif" style="width:80%"></p>
+                <p class="text-center">Fig 2 turtleBot SLAM</p>
+                <p></p>
+                <h4 style="font-size:20px">At figure 2 we are using Gazebo House enviroment to navigate, explore and map the enviroment. </h4> 
+                <p></p>
+
+                <h3>Results</h3>
+                <p></p>
+                <h4 style="font-size:20px">Below we see our algorithm implementation at different scenarios</h4> 
+                <p></p>
+
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/turtle_slam/turtle_slam.gif" class="img-responsive" alt="turtle_slam" style="width:80%"></p>
+                <p class="text-center">Fig 3 actual turtleBot SLAM</p>
+                <p></p>
+                <h4 style="font-size:20px">At figure 3 we are using the actual turtleBot to navigate and create a map of my house. </h4> 
+                <p></p>
+                
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/turtle_slam/Navigation.gif" class="img-responsive" alt="navigation" style="width:80%"></p>
+                <p class="text-center">Fig. 4 navigation in explored enviroment</p>
+                <p></p>
+                <h4 style="font-size:20px">At figure 4 we see the turtleBot navigating in an enviroment(Gazebo House) that has been already explored.</h4> 
+                <p></p>
+                
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/turtle_slam/auto_explore.gif" class="img-responsive" alt="auto exploration" style="width:80%"></p>
+                <p class="text-center">Fig. 5 Autonomus Exploration</p>
+                <p></p>
+                <h4 style="font-size:20px"></h4>At figure 5 we see the implementation of frontiers for autonomous exploration usgin Gazebo. The algorith set goal positions on its own. Instead of previous examples 
+            were we used 2d nav arrows or the teleop package.</h4> 
+                <p></p>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <p></p>
+                    <form action="https://github.com/jimas95/homework04-jimas95" method="get" target="_blank">
+                        <button type="submit" class="btn btn-primary">Check Project on Github</button>
+                     </form>
+                     <p></p>
+                    <button type="button" class="btn btn-primary center" data-dismiss="modal">Close Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
