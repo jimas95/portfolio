@@ -1,41 +1,91 @@
- <!-- Modal 1 -->
- <div class="portfolio-modal modal fade modal-xl" id="project1" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Modal 2 -->
+<div class="portfolio-modal modal fade modal-xl" id="cup_tower" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="text-center modal-title">Recycler Baxter - Work in Progress</h3>
-                <h4 class="text-center">ROS  |  Python  |  Computer Vision  |  Motion Planning  |  Inverse Kinematics  |  OpenCV  |  MoveIt</h4>
+                <h3 class="text-center modal-title">Cup Tower Build</h3>
+                <h4 class="text-center">  | Python | ROS | MoveIt | ApriTag | Baxter |</h4>
             </div>
             
             <!-- Modal body -->
             <div class="modal-body">
-                <p></p>
-                <h4>This is an ongoing project. Here is a little teaser:</h4> 
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Baxter/Baxter.gif" class="img-responsive" alt="The Baxter in action" style="width:80%"></p>
-                <p class="text-center">The Baxter in action</p>    
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Baxter/Baxter_sorting.gif" class="img-responsive" alt="Sorting bottles and cans"></p>
-                <p class="text-center">Sorting bottles and cans</p>
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Baxter/realsense.png" class="img-responsive" alt="Recognizing and classifying bottles and cans" style="width:80%">
-                <p class="text-center">Recognizing and classifying bottles and cans</p>  
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Baxter/CV.gif" class="img-responsive" alt="Recognizing and classifying bottles and cans" style="width:80%"></p>
-                <p class="text-center">Recognizing and classifying bottles and cans</p>
+                <h3>Description</h3>       
+                <p>                
+                    The goal of the project is to use robot Baxter and build a tower of cups.
+                    <br> This is a team project. The names of my team are :
+                    <br> Dimitrios Chamzas
+                    <br> Dongho Kang
+                    <br> Sonia Lai
+                    <br> Gabbie Wink
+                </p>
 
+
+                <p></p>
+                
+                <h3>Overview</h3>       
+                <p>In order to build the tower of cups we split the algorithm into 2 main states.
+                    <br>Our environment is a table in front of the robot with cups on it in random positions.
+                    Baxter has to use both his hands and place all the cups at the side of the table(figure 1).
+                    After all the cups are at the side of the table Baxter has to pick each cup again and build the tower(figure 2). 
+                    
+
+                </p>
+                <p class="text-center">
+                <img class="center" src="img/portfolio/Tower_Build/state1.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
+                <p class="text-center">Fig.1 STATE 1 </p>
+                <p></p>
+                <p class="text-center">
+                <img class="center" src="img/portfolio/Tower_Build/state2.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
+                <p class="text-center">Fig.2 STATE 2</p>
+                <p></p>
+
+                <p>For the position detection of each cup we used ROSaprilTag package. Baxter is equipped with 3 cameras, one at his head and one on each arm.
+                     We used the cameras that are at the arms of the robot(figure 3).</p>
+                <p class="text-center">
+                <img class="center" src="img/portfolio/Tower_Build/AprilTag.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
+                <p class="text-center">Fig.3 AprilTag Detection</p>
+                <p></p>
+                <p>For path planning we used MoveIt package and cartesian planner.
+                     In order to avoid collision with the cups or the table the whole enviroment has been added at the rViz enviroment(figure 4).</p>
+                <p class="text-center">
+                <img class="center" src="img/portfolio/Tower_Build/rViz.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
+                <p class="text-center">Fig.4 rViz sceneray</p>
+                <p></p>
+
+                <h3>Results</h3>
+                <p></p>
+                <h4 style="font-size:20px">Below are states 1 & 2 for different number of cups. Videos are speed up by 6 times.</h4> 
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/3_cups.gif" class="img-responsive" alt="3_agents_obstacles" style="width:80%"></p>
+                <p class="text-center">Fig.5 3 Cups</p>
+                <p></p>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/6_cups.gif" class="img-responsive" alt="8_agents_circle_sampling" style="width:80%"></p>
+                <p class="text-center">Fig.6 6 Cups</p>
+                <p></p>
+                <p></p>
+                
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/10_cups.gif" class="img-responsive" alt="40_agents_square_obstacles" style="width:80%"></p>
+                <p class="text-center">Fig.7 10 Cups</p>
+                <p></p>
+                
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="text-center">
-                    <!-- <p></p>
-                    <form action="https://github.com/YaelBenShalom" method="get" target="_blank">
+                    <p></p>
+                    <form action="https://github.com/jimas95/final-project-fast-tower" method="get" target="_blank">
                         <button type="submit" class="btn btn-primary">Check Project on Github</button>
-                     </form> -->
+                     </form>
                      <p></p>
                     <button type="button" class="btn btn-primary center" data-dismiss="modal">Close Project</button>
                 </div>
@@ -43,3 +93,5 @@
         </div>
     </div>
 </div>
+
+
