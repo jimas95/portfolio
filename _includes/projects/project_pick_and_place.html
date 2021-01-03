@@ -6,87 +6,48 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="text-center modal-title">Multi Agents</h3>
-                <h4 class="text-center">Matlab  |  Multiple Agents  |  Obstacle Avoidance  | Real Time | Reciprocal Velocity   |</h4>
+                <h3 class="text-center modal-title">Pick & Place</h3>
+                <h4 class="text-center">ROS  |  MoveIt  |  PincherX 100  |  Robotic Manipulation  |</h4>
             </div>
             
             <!-- Modal body -->
             <div class="modal-body">
                 <h3>Description</h3>       
-                <p>In this project, We show that this method guarantees safe and oscillation free motions for each of the agents. We apply our concept
-                    to navigation of hundreds of agents in densely populated
-                    environments containing both static and moving obstacles, and
-                    we show that real-time and scalable performance is achieved
-                    in such challenging scenarios. The project is based on this paper <a href="https://ieeexplore.ieee.org/document/4543489">Reciprocal Velocity Obstacles for real-time multi-agent navigation</a>.</p>
+                <p>This project was one of my first ones while learning ROS. 
+                    The goal is to pick a box and leave it somewhere else. 
+                    No computer vision was used. Instead, I simulated in Moveit the scenery of my desk. 
+                    we attach the grabbing object in order to avoid any collisions while moving it away. </p>
                 <p></p>
                 
                 <h3>Overview</h3>       
-                <p> The basic idea is that each agent tries to decide his velocity based on the current position
-                    , the goal position and information about other obstacles(or agents). The chosen new velocity 
-                    guarantees that there will be no collision. The only information each agent is required to have about
-                    the other agents is their current position and velocity, and
-                    their exact shape (all of which can be acquired by sensors).</p>
-                <p></p>
-                <p class="text-center">
-                <img class="center" src="img/portfolio/multi_agent/velocity_triangle.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
-                <p class="text-center">The Velocity Obstacle VO_AB(VB) of a disc-shaped obstacle B to a disc-shaped agent A.</p>
-                <p></p>
-                <h4 style="font-size:20px">Basic idea of updating choosing new velocity. Let A be an agent translating in the plane with its reference
-                    point positioned at pA , and let B be a planar (moving)
-                    obstacle with its reference point positioned at pB. The velocity obstacle VO_AB(VB) of obstacle B to agent A is then
-                    the set consisting of all those velocities VA for A that will
-                    result in a collision at some moment in time with obstacle
-                    B moving at velocity VB .</h4> 
+                <p>The setup of our world is that the robot sits on top 
+                    of a table that is on top of another table. In front of it, 
+                    there is an object that we consider as an obstacle. Right from this obstacle 
+                    (in respect to the robot), there is another object. The goal is to figure out a path in
+                     order to grab the object and while avoiding our box obstacle leave the object on the other side. 
+                    Below we see a demonstration of it at rViz(figure 1) and using the real robot(figure 2).
 
                 <p></p>                   
                 <p class="text-center">
-                <img class="center" src="img/portfolio/multi_agent/two_agents.gif" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
-                <p class="text-center">2 agents switching positions</p> 
-                <p></p>
-                <h4 style="font-size:20px">A this example we see 2 agents trying to switch position, we tweak the alpha parameter which is 
-                    affecting the priority. Given alpha=1 the first agent will not change its course at all while setting a = 0.5 both of them will switch their velocity in order to avoid 
-                    collisions.</h4> 
-
-                <h3>Results</h3>
-                <p></p>
-                <h4 style="font-size:20px">Below we test our algorithm implementation at different scenarios</h4> 
+                <img class="center" src="img/portfolio/pick_and_place/rViz_arm.gif" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">rViz Pick & Place Fig.1 </p> 
                 <p></p>
 
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/multi_agent/3_agents_obstacles.gif" class="img-responsive" alt="3_agents_obstacles" style="width:80%"></p>
-                <p class="text-center">3 agents with different size and obstacles</p>
                 <p></p>
-                <h4 style="font-size:20px">At this example we see that the algorithm is able to correspond at different agent sizes and obstacles without a problem.</h4> 
+                <p class="text-center">
+                <img class="center" src="img/portfolio/pick_and_place/real_arm.gif" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
+                <p class="text-center">Real Robot Fig 2 </p>
                 <p></p>
 
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/multi_agent/8_agents_circle_sampling.gif" class="img-responsive" alt="8_agents_circle_sampling" style="width:80%"></p>
-                <p class="text-center">Acceleration on/off.</p>
-                <p></p>
-                <h4 style="font-size:20px">With this example we see that having maximum acceleration the result is a smooth trajectory. </h4> 
-                <p></p>
-                
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/multi_agent/40_agents_square_obstacles.gif" class="img-responsive" alt="40_agents_square_obstacles" style="width:80%"></p>
-                <p class="text-center">40 agents with squared obstacles </p>
-                <p></p>
-                <h4 style="font-size:20px">This is a more complicate example with 40 agents and squared obstacles.</h4> 
-                <p></p>
-                
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/multi_agent/10_agents_alinged_moving_obstacle.gif" class="img-responsive" alt="10_agents_alinged_moving_obstacle" style="width:80%"></p>
-                <p class="text-center">10 agents alinged crossing a round & square obstacle</p>
-                <p></p>
-                <h4 style="font-size:20px"></h4>At this example we see that some agents go with full speed and pass the moving object while other agents slow down and pass after the moving obstacle.</h4> 
-                <p></p>
-                <p>Over all the algorithm does correspond without any collisions or oscillations.</p>
+
+              
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="text-center">
                     <p></p>
-                    <form action="https://github.com/jimas95/Multi-Agent-Navigation" method="get" target="_blank">
+                    <form action="https://github.com/jimas95/homework-3-jimas95/tree/main/arm_move" method="get" target="_blank">
                         <button type="submit" class="btn btn-primary">Check Project on Github</button>
                      </form>
                      <p></p>
