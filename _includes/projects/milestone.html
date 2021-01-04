@@ -7,22 +7,117 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="text-center modal-title">Milestone</h3>
-                <!-- <h4 class="text-center">Augmented Reality | OpenCV  |  Unity  |  Computer Vision  | 3D Tracking | 3D Registration | </h4> -->
+                <h4 class="text-center"> Robotic Manipulation | PI Control  |  Omnidirectional Robot  |  Python  | Motion Planning | </h4>
             </div>
            
             <!-- Modal body -->
             <div class="modal-body">
+                <h3>Description</h3>     
+                <p></p>                   
+                <p>In this project, I wrote a software that plans a trajectory for 
+                    the end-effector of the YouBot mobile manipulator, The goal is to pick a small box from 
+                    a known location and place it on a specific position & orientation.
+                </p>                   
+                <p></p>                   
+  
+
+
+
+                <h3>Overview</h3>       
+                <p></p>    
+                <p>The YouBot is an omnidirectional mobile robot with a 5-DOF robotic arm, 
+                    simulated in CoppeliaSim simulation software.     
+                    The project is split into 3 main parts:
+                <ul>
+                    <li>Generate trajectory for end-effector given the cube initial,desired position (see figure 1).</li>
+                    <li>Next state , given the current velocity of all joints and wheels calculate the next configuration state.</li>
+                    <li>Feedforward PI control where we calculate the joint velocities given the current state and the reference trajectory path.</li>
+                </ul>
+                </p>    
+                <p> <b>Generate trajectory </b></p>    
+                <p>
+                    In order to generate 
+                    the reference trajectory for the end-effector frame I used six concatenated trajectory segments, as described above.
+                    
+                    <ul>
+                        <li>A trajectory to move the gripper from its initial configuration to a "standoff" configuration a few cm above the block.</li>
+                        <li>A trajectory to move the gripper down to the grasp position.</li>
+                        <li>Closing of the gripper.</li>
+                        <li>A trajectory to move the gripper back up to the "standoff" configuration.</li>
+                        <li>A trajectory to move the gripper to a "standoff" configuration above the final configuration.</li>
+                        <li>A trajectory to move the gripper to the final configuration of the object.</li>
+                        <li>Opening of the gripper.</li>
+                        <li>A trajectory to move the gripper back to the "standoff" configuration.</li>
+                    </ul>
+                </p> 
+                    <p></p>   
+                    <p class="text-center">
+                        <img class="center" src="img/portfolio/milestone/coppelisSim_trajectory.gif" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                        <p class="text-center">Fig. 1 end-effector trajectory</p> 
+                   
+
+                <p>
+                    <b>The Next State</b> part is basically our update function going from time t to t + Δt using the first-order Euler step.
+                    <ul>
+                        <li>new arm joint angles = (old arm joint angles) + (joint speeds) * Δt</li>
+                        <li>new wheel angles = (old wheel angles) + (wheel speeds) * Δt</li>
+                        <li>Since YouBot is equipped with omnidirectional we calculate the chassis velocity from figure 3.</li>
+                    </ul>
+
+                </p>      
+                See examples at figure 5 & 6  
                 
-                <p>UNDER CONSTRUCTION</p>
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/robot.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 2 omnidirectional wheels of YouBot </p> 
+
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/velocity.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 3  chassis velocity</p> 
+
+                <p>
+                    <b>Feedforward PI control</b>
+                    
+                </p>    
+
+
+                <p>Our controler is described by equation at figure 4, we used only Position and Integration. At figure 5 we see the error of the end-effector and chassis relative to time.</p>    
+                <p></p>    
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/control.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 4  control equestion</p> 
+
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/error.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 5  controler error</p> 
+
+                <p></p>    
+
+                <h3>Results</h3>
+                <p>Below we see some examples of YouBot in Coppelia Simulator.</p>    
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/wheel_example.gif" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 6  Example omnidirectional wheels movement</p> 
+
+
+                <p class="text-center">
+                <img class="center" src="img/portfolio/milestone/task_1.gif" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 7 Final example pick and place box</p> 
                 
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="text-center">
+                    <p></p>
+                    <form action="https://github.com/jimas95/Milestone" method="get" target="_blank">
+                        <button type="submit" class="btn btn-primary">Check Project on Github</button>
+                    </form>
+                    <p></p>
                     <button type="button" class="btn btn-primary center" data-dismiss="modal">Close Project</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
