@@ -1,49 +1,69 @@
+<aside class="bg-primary">
+    <div class="container-fluid text-center">
+      <div class="col-lg-6 col-lg-offset-3 text-center">
+            <h2>Contact info.</h2>
+            <hr class="light">
+            <p class="text-faded">Feel free to contact me in any of the ways given here.</p>
+      </div>
+    </div>
+</aside>
+
 <section id="contact">
     <div class="container">
+
+
         <div class="row">
 
-            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <div class="col-sm-4">
                 <img style="border-radius: 50%" src="img/my_photo.jpg" alt="My picture" width="300" height="300">  
                 <br><br><br>
             </div>
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">CONTACT INFORMATION</h2>
-                <hr class="primary">
-                <p><a href="mailto:chamzas95@gmail.com">chamzas95@gmail.com</a></p>
-                <p>+1 224 659 3756</p>
+
+            <div class="col-sm-4">
+                <h2 class="section-heading">Dimitrios Chamzas</h2>
+                <p class="text-muted" >Electrical & Robotics Engineer</p>
+
+                <p>Email : <a href="mailto:chamzas95@gmail.com">chamzas95@gmail.com</a></p>
+                <p>Phone : +1 224 659 3756</p>
                 <br>
+                <div class="service-box">
+                    <a href="./Dimitrios_Resume.pdf" target="_blank" class="btn btn-primary btn-xl wow tada">Download Resume</a>
+                </div>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center">    
-            <div class="col-lg-3  text-center">
-                <a href="https://linkedin.com/in/{{ site.LinkedIn_username }}" target="_blank"> 
-                    <i class="fa fa-linkedin fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p>LinkedIn</p>
-                </a>
-            </div>
-            <div class="col-lg-3 text-center">
-                <a href="mailto:{{ site.email }}" target="_blank">
-                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p>email</p>
-                </a>
-            </div>
-            <div class="col-lg-3  text-center">
-                <a href="https://github.com/{{ site.github_username }}" target="_blank">
-                <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p>GitHub</p>
-                </a>
-            </div> 
-             
-            <div class="col-lg-3  text-center">
-                <a href="https://scholar.google.com/{{ site.google_scholar_username }}" target="_blank">
-                    <img  src="img/gscholar.png" style="width:20%;">
-                    <p>Google Scholar</p>
-                </a>
-            </div>
-    
+            
+            <div class="col-sm-4" align="right">    
+                <div class="row">
+                    <a href="https://linkedin.com/in/{{ site.LinkedIn_username }}" target="_blank"> 
+                        <i class="fa fa-linkedin fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>LinkedIn</p>
+                    </a>
+                </div>
 
-        </div>                                                                                                          
+                <div class="row">
+                    <a href="mailto:{{ site.email }}" target="_blank">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>email</p>
+                    </a>
+                </div>
 
+                <div class="row">
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank">
+                    <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>GitHub</p>
+                    </a>
+                </div> 
+                
+                <div class="row">
+                    <a href="https://scholar.google.com/{{ site.google_scholar_username }}" target="_blank">
+                        <img  src="img/gscholar.png" style="width:20%;">
+                        <p>Google Scholar</p>
+                    </a>
+                </div>
+        
 
+            </div>      
+
+        </div>                                                                                                   
     </div>
 </section>
+

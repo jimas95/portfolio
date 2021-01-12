@@ -7,14 +7,108 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="text-center modal-title">Jack in a Box</h3>
-                <!-- <h4 class="text-center">Augmented Reality | OpenCV  |  Unity  |  Computer Vision  | 3D Tracking | 3D Registration | </h4> -->
+                <h4 class="text-center"> | Python | Dynamic Simulation  | Euler-Lagrange | </h4>
             </div>
            
             <!-- Modal body -->
             <div class="modal-body">
                 
-                <p>UNDER CONSTRUCTION</p>
+                <p>Description</p>
+                <p>In this project we design a dynamic simulation of a jack inside a box. 
+                    Jack can freely move inside the box, but as the 2 objects collide with each other impact rules are applied to simulate a result we would expect to happen in reality. Our objects have masses, Inertia, and gravity.
+                </p>
+
+
+                <p>Overview</p>
+                <p>The project utilizes the Euler-Lagrange equation(figure 1). With the Euler Lagrange, we can simulate the system, such as add gravity. For the impact, we consider the Jack as 4 balls at the edge of him all of which are connected with each other.
+                    We define them as frames and keep track of their position(figure 2). Having defined 4 additional frames at the middle of each wall of our box(figure 3)
+                    we check the manhattan distance between these frames (16 in total) on each step of the simulation. 
+                    If the distance is zero in any of those equations then an impact has occurred and we update the systems velocities properly.
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/jack_in_box/euler.png" class="img-responsive" alt="euler" style="width:80%"></p>
+                <p class="text-center">Fig. 1 Euler-Lagrange Equastion</p>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/jack_in_box/jack_FRAMES.png" class="img-responsive"  alt="jack_FRAMES" style="width:60%"></p>
+                <p class="text-center">Fig. 2 Jack Frames</p>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/jack_in_box/middleWalss.png" class="img-responsive" alt="middleWalss" style="width:60%"></p>
+                <p class="text-center">Fig. 3 Box Frames</p>
+                <p></p>
+
+
+                <p>Results</p>
+
+                <p>After the project is complete we are able to do different simulations with simple code modifications.
+                    Modifications such as applying rotation forces, gravity, or choose which object gets affected by the impact.
+                    Below we see some simulations of our system.
+                </p>
                 
+
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/jack_in_box/down_force.gif" class="img-responsive" alt="down_force" style="width:80%"></p>
+                <p class="text-center">Fig. 4 Gravity on Jack</p>
+                <p></p>
+
+                    <div class="column">
+                      <img src="img/portfolio/jack_in_box/Box_coordinates.png" alt="Box_coordinates" style="width:45%">
+                      <img src="img/portfolio/jack_in_box/Box_velocity.png" alt="Box_velocity" style="width:45%">
+                    </div>
+
+                <div class="column">
+                    <img src="img/portfolio/jack_in_box/Jack_coordinates.png" alt="Jack_coordinates" style="width:45%">
+                    <img src="img/portfolio/jack_in_box/Jack_velocity.png" alt="Jack_velocity" style="width:45%">
+                </div>
+                <p class="text-center">Fig. 5 Grafic plots of fig.4</p>
+
+                <p></p>
+                <p>
+                    At figure 4 we set gravity only at Jack and the impact affecting both items. 
+                    As a result, Jack due to gravity forces the box to move down.
+                    At figure 5 we see the plots of position and velocity for both items.
+                </p>
+                <p></p>
+
+                <div class="column">
+                    <img src="img/portfolio/jack_in_box/left_right.gif" alt="left_right" style="width:45%">
+                    <img src="img/portfolio/jack_in_box/up_down.gif" alt="up_down" style="width:45%">
+                </div>
+                <p class="text-center">Fig. 6 Traslation Forces</p>
+
+
+                <p></p>
+                <p>
+                    At figure 6 we apply oscilating forces at the box leading in a right to left movement or up and down.
+                    In the first example (left gif) both items do not have gravity.
+                    While on the second example(right gif) Jack has gravity which makes the forces applied to the box incapable of 
+                    keeping a "perfect oscillation" since the gravity force increases the energy of the box due to the impact leading hit towards the floor.
+                    both of the objects get affected by the impacts in both examples.
+                </p>
+                <p></p>
+
+
+                <div class="column">
+                    <img src="img/portfolio/jack_in_box/rotation_noIM.gif" alt="rotation_noIM" style="width:45%">
+                    <img src="img/portfolio/jack_in_box/left_right_rota.gif" alt="left_right_rota" style="width:45%">
+                </div>
+                <p class="text-center">Fig. 7 Rotation Forces </p>
+
+
+                <p></p>
+                <p>
+                    At figure 7 we apply rotation forces at the box and Jack is under the influance of gravity.
+                    On the first gif (left) the impact does not affect the box this is why his position does not change.
+                    While on the second gif(right) the impact affects both items eventually forcing the box to go downwards.
+                </p>
+                <p></p>
+
+
             </div>
 
             <!-- Modal footer -->
@@ -31,3 +125,4 @@
         </div>
     </div>
 </div>
+
