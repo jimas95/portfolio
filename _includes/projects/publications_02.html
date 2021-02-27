@@ -14,12 +14,42 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <p></p>
-                <h4>It was published as a paper at conference GRAPP 2021.</h4> 
+                <h4>The algorithm cMinMax was published as a paper at conference GRAPP 2021. </h4> 
                 <p class="text-center">
                     <img class="center" src="img/portfolio/paper_02/corner_detection.gif" class="img-responsive" alt="corner_detection" style="width:80%"></p>
                 <p class="text-center">Fig. 1 Corner Detection</p>    
 
             </div>
+
+
+
+            <p>Abstract</p>
+            <p>
+                During the last years, the emerging field of Augmented & Virtual Reality (AR-VR) has seen tremendous
+                growth. At the same time there is a trend to develop low cost high-quality AR systems where computing power
+                is in demand. Feature points are extensively used in these real-time frame-rate and 3D applications, therefore
+                efficient high-speed feature detectors are necessary. Corners are such special features and often are used as the
+                first step in the marker alignment in Augmented Reality (AR). Corners are also used in image registration and
+                recognition, tracking, SLAM, robot path finding and 2D or 3D object detection and retrieval. Therefore there
+                is a large number of corner detection algorithms but most of them are too computationally intensive for use in
+                real-time applications of any complexity. Many times the border of the image is a convex polygon. For this
+                special, but quite common case, we have developed a specific algorithm, cMinMax. The proposed algorithm
+                is faster, approximately by a factor of 5 compared to the widely used Harris Corner Detection algorithm. In
+                addition is highly parallelizable. The algorithm is suitable for the fast registration of markers in augmented
+                reality systems and in applications where a computationally efficient real time feature detector is necessary.
+                The algorithm can also be extended to N-dimensional polyhedrons.
+            </p>
+
+            <p>Description</p>
+            <p>
+                The algorith is able to detect all the corner from a convex polygon, it is simple and fast. The basic idea is that if we project our object 
+                on x and y axis and calculate the minimum and maximum values then those points represent corners. From this idea the name of the algorithm also derives : cMinMax, corners min max.
+                The next step is to rotate the object by some degrees and recalculate min and max values. After a number of rotation steps we are sure that we have detected all the corners.
+                You can see the paper by clicking the button below for more details.
+            </p>
+
+
+
 
             <!-- Modal footer -->
             <div class="modal-footer">
