@@ -12,14 +12,39 @@
             
             <!-- Modal body -->
             <div class="modal-body">
+
+                <h3>Examples</h3>
+                <p></p>
+                <h4 style="font-size:20px">Below are some videos of states 1 & 2 for different number of cups. Videos are speed up by 6 times.</h4> 
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/3_cups.gif" class="img-responsive" alt="3_agents_obstacles" style="width:80%"></p>
+                <p class="text-center">Fig.1 3 Cups</p>
+                <p></p>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/6_cups.gif" class="img-responsive" alt="8_agents_circle_sampling" style="width:80%"></p>
+                <p class="text-center">Fig.2 6 Cups</p>
+                <p></p>
+                <p></p>
+                
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/Tower_Build/10_cups.gif" class="img-responsive" alt="40_agents_square_obstacles" style="width:80%"></p>
+                <p class="text-center">Fig.3 10 Cups</p>
+                <p></p>
+
+
                 <h3>Description</h3>       
                 <p>                
                     The goal of the project is to use robot Baxter and build a tower of cups.
-                    <br> This is a team project. The names of my team are :
+                    <br> This was a team project. The names of the team are :
                     <br> Dimitrios Chamzas
                     <br> Dongho Kang
                     <br> Sonia Lai
                     <br> Gabbie Wink
+                    My contribution to this project was mainly at the robotic manipulation part(grasping, placing the cups) but also lead the team on how we should approach each part of the project.
                 </p>
 
 
@@ -28,54 +53,34 @@
                 <h3>Overview</h3>       
                 <p>In order to build the tower of cups we split the algorithm into 2 main states.
                     <br>Our environment is a table in front of the robot with cups on it in random positions.
-                    Baxter has to use both his hands and place all the cups at the side of the table(figure 1).
-                    After all the cups are at the side of the table Baxter has to pick each cup again and build the tower(figure 2). 
+                    Baxter has to use both his hands and place all the cups at the side of the table(figure 4).
+                    After all the cups are at the side of the table Baxter has to pick each cup again and build the tower(figure 5). 
                     
 
                 </p>
                 <p class="text-center">
                 <img class="center" src="img/portfolio/Tower_Build/state1.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
-                <p class="text-center">Fig.1 STATE 1 </p>
+                <p class="text-center">Fig.4 STATE 1 </p>
                 <p></p>
                 <p class="text-center">
                 <img class="center" src="img/portfolio/Tower_Build/state2.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
-                <p class="text-center">Fig.2 STATE 2</p>
+                <p class="text-center">Fig.5 STATE 2</p>
                 <p></p>
 
                 <p>For the position detection of each cup we used ROSaprilTag package. Baxter is equipped with 3 cameras, one at his head and one on each arm.
-                     We used the cameras that are at the arms of the robot(figure 3).</p>
+                     We used the cameras that are at the arms of the robot(figure 6).</p>
                 <p class="text-center">
                 <img class="center" src="img/portfolio/Tower_Build/AprilTag.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
-                <p class="text-center">Fig.3 AprilTag Detection</p>
+                <p class="text-center">Fig.6 AprilTag Detection</p>
                 <p></p>
                 <p>For path planning we used MoveIt package and cartesian planner.
-                     In order to avoid collision with the cups or the table the whole enviroment has been added at the rViz enviroment(figure 4).</p>
+                     In order to avoid collision with the cups or the table the whole enviroment has been added at the rViz enviroment(figure 7).</p>
                 <p class="text-center">
                 <img class="center" src="img/portfolio/Tower_Build/rViz.png" class="img-responsive" alt="velocity_triangle.png" style="width:70%"></p>
-                <p class="text-center">Fig.4 rViz sceneray</p>
+                <p class="text-center">Fig.7 rViz sceneray</p>
                 <p></p>
 
-                <h3>Results</h3>
-                <p></p>
-                <h4 style="font-size:20px">Below are states 1 & 2 for different number of cups. Videos are speed up by 6 times.</h4> 
-                <p></p>
 
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Tower_Build/3_cups.gif" class="img-responsive" alt="3_agents_obstacles" style="width:80%"></p>
-                <p class="text-center">Fig.5 3 Cups</p>
-                <p></p>
-                <p></p>
-
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Tower_Build/6_cups.gif" class="img-responsive" alt="8_agents_circle_sampling" style="width:80%"></p>
-                <p class="text-center">Fig.6 6 Cups</p>
-                <p></p>
-                <p></p>
-                
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/Tower_Build/10_cups.gif" class="img-responsive" alt="40_agents_square_obstacles" style="width:80%"></p>
-                <p class="text-center">Fig.7 10 Cups</p>
-                <p></p>
                 
             </div>
 
