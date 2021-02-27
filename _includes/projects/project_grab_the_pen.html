@@ -14,7 +14,17 @@
             <div class="modal-body">
                 <p></p>
                 <h3>Description</h3>       
-                <p>In This project, computer vision and motion planning is used to control a robotic arm to grab a pen and leave it iside a box.</p>
+                <p>In this project, computer vision and motion planning is used to control a robotic arm to grab a pen and leave it iside a box.</p>
+
+                <h3>Demonstration</h3>       
+                <p>The following video is a demonstration of the grab the pen:</p>
+                <p class="text-center">
+                    <img class="center" src="img/portfolio/grab_the_pen/grab_the_pen.gif" class="img-responsive" alt="Pen stealing" style="width:80%"></p>
+                <p class="text-center">Fig. 2 Grab The Pen</p>
+
+
+
+                <h3>Layout</h3>       
                 <p>This project contains 2 parts:</p>
                 <ol style="font-size:16px">
                     <li>A computer vision algorithm for recognizing the 3D location of a purple pen, using the realSense RGBD camera.
@@ -26,14 +36,14 @@
                 <h3>Overview</h3>
                 <h4 style="font-size:20px">Part 1 - Pen Recognition</h4> 
                 <p>In order to locate the pen in the 3D space we used OpenCV2. 
-                    <br>First step is to transform our RGB image to HSV where it is easier to filter the image and isolate only the purple color (see figure 1 left image).
-                    <br>Since we have isolated the pen from the image we are detecting contours and keeping only the ones that exceed a threshold based on the contour area (see figure 1 right image).
+                    <br>First step is to transform our RGB image to HSV where it is easier to filter the image and isolate only the purple color (see figure 2 left image).
+                    <br>Since we have isolated the pen from the image we are detecting contours and keeping only the ones that exceed a threshold based on the contour area (see figure 2 right image).
                 </p>
                 <p>Now that we are able to detect the pen at the RGB image we know the location of the pen at the Depth image, and then retrieving the 3D coordinates.</p>
                 
                 <p class="text-center">
                     <img class="center" src="img/portfolio/grab_the_pen/detection.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
-                <p class="text-center">Fig. 1 Pen recognition</p>
+                <p class="text-center">Fig. 2 Pen recognition</p>
                 <p></p>
                 <h4 style="font-size:20px">Part 2 - Pen Grab</h4> 
                 <p>In this part, The interbotix motion and control packages are used to move the arm to a specified coordinates and grab the pen.</p>
@@ -45,10 +55,7 @@
                     <li>Move the arm to a location above the box</li>
                     <li>Open the gripper and release the pen inside the box</li>
                 </ol>
-                <p>The following video is a demonstration of the grab the pen:</p>
-                <p class="text-center">
-                    <img class="center" src="img/portfolio/grab_the_pen/grab_the_pen.gif" class="img-responsive" alt="Pen stealing" style="width:80%"></p>
-                <p class="text-center">Fig. 2 Grab The Pen</p>
+
             </div>
 
             <!-- Modal footer -->
