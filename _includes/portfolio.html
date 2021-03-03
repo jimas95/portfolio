@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row no-gutter">
             <div class="col-lg-4 col-sm-6">
-                <a href="#cup_tower" class="portfolio-box" tabindex="-1" role="dialog" aria-hidden="true" data-toggle="modal">
+                <a href="https://jimas95.github.io/portfolio/#cup_tower" class="portfolio-box" tabindex="-1" role="dialog" aria-hidden="true" data-toggle="modal">
                     <img src="img/portfolio/Tower_Build/final_cup.gif" class="img-responsive" alt="Project 1">
                     <span class="link-spanner"></span>
                     <div class="portfolio-box-caption">
@@ -33,8 +33,26 @@
 
             </div>
 
+
+            {% for post in site.posts %}
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/{{ post.thumbnail }}" class="img-responsive img-centered" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ post.title }}</h4>
+                        <p class="text-muted">{{ post.subtitle }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
             <div class="col-lg-4 col-sm-6">
-                <a href="#grab_the_pen" class="portfolio-box" tabindex="-1" role="dialog" aria-hidden="true" data-toggle="modal">
+                <a href="https://jimas95.github.io/portfolio/#grab_the_pen" class="portfolio-link" tabindex="-1" role="dialog" aria-hidden="true" data-toggle="modal">
                     <img src="img/portfolio/grab_the_pen/grab_the_pen.gif" class="img-responsive" alt="Project 1">
                     <span class="link-spanner"></span>
                     <div class="portfolio-box-caption">

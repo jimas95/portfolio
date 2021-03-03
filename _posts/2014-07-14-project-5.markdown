@@ -1,0 +1,13 @@
+---
+title: DIY smartwatch 
+subtitle: In progress
+layout: default
+modal-id: 5
+date: 2014-07-14
+img: smartwatch.png
+thumbnail: smartwatch-thumbnail.png
+alt: image-alt
+project-date: April 2014
+description: Coming Soon!
+
+---
