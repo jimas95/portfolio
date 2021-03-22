@@ -1,0 +1,173 @@
+<section class="no-padding" >
+    <div class="container-fluid center">
+        <div class="row no-gutter center">
+            <div class="col-lg-8 col-lg-offset-2">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="text-center modal-title">Sawback Pick and Place</h3>
+                <h4 class="text-center"> ROS  |  SLAM  | Autonomous Navigation | C++ | MoveIt | Robitc Manipulation</h4>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+
+
+
+                <h3>Description</h3>       
+                <p>This project is a proof of concept that we are able withought any human intervention navigate in a room, detect objects that are not where they should be and return them to their original position.
+                    The robot is able to navigate around the lab space autonomous, there is a mode of patrol, when this mode is activated the robot will go back and forth in a certain area.
+                    If an item is detected then the robot will pick the object and based on which object it detected it would autonomous navigate to the area of drawers,box container or shelfs and place the object where it belongs.
+                </p>
+                <p></p>
+
+
+                <h3>Demonstration of sawback opening a drawer</h3>       
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/drawer.gif" class="img-responsive" alt="auto exploration" style="width:80%"></p>
+                <p></p>
+
+               
+
+
+                <h3>Overview</h3>       
+                <p> The hardest part on this project was the intergration of all the compenents(robots and sensors) we have and fuse them together. The robot named sawback is actually 2 different robots.
+                    The first one is <a href="https://clearpathrobotics.com/ridgeback-indoor-robot-platform/">Ridgeback</a> an omnidirectional mobile platform on which the robot 
+                    <a href="https://www.rethinkrobotics.com/sawyer">Sawyer</a> was attached to it, thus the name of our robot is Sawback. Each robot has his own computer and if we add the developers computer we have in total 
+                    3 different computers that each one has to execute specific instructions and comunicate with the others. Another problem to overcome was packages that were used, in total 
+                    there where almost 80 different packages! Split in different workspaces. So extented workspaces had to be created that link the whole project together and machine tags in order to specifiy what is being executed where.
+                    
+                </p>
+
+                <h3>Autonomous Navigation</h3>
+                <p>
+                    As a first step in this project I created the map of the room that I was working on(Figure 1). This room was the lab of my Univerisity.
+                    In order to create the map, Velodyne lidar sensor was used and library rtabmaps in order to SLAM and convert our 3D point cloud to a 2D map.
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/mapping_rviz.gif" class="img-responsive" alt="map.png" style="width:80%"></p>
+                <p class="text-center">Fig. 1 Map Creation</p>
+                <p></p>
+
+
+                <p>
+                    After the creation of the map (Figure 2) specific points where saved. MoveBase action was used, Hokoyu front/rear and Velodyne lidar sensors help us to avoid any colisionts.
+                    The points that where saved are :
+                    <ul>
+                        <li>Kitchen Area</li>
+                        <li>Charging Station</li>
+                        <li>Shelfs Area</li>
+                        <li>Box container Area</li>
+                        <li>Drawer Area</li>
+                    </ul>
+                    At these point we are able to navigate around(with no collision) the lab and go on each of these location by just calling a service and the location we want.
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/labMap.png" class="img-responsive" alt="map.png" style="width:80%"></p>
+                <p class="text-center">Fig. 2 Lab Map</p>
+                <p></p>
+
+                
+                <h3>Patrol</h3>
+                <p>
+                    In the project there is a special mode that gets activated with a service. When patrol mode (Figure 3) is on the robot will start from its original position 
+                    and go forward for about 5 meters and the return to the starting position again and again. If an object is detected then the robot will stop and the robotic arm manipulation will start.
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/back_and_forth.gif" class="img-responsive" alt="slam.gif" style="width:80%"></p>
+                <p class="text-center">Fig 3 Patrol MODE.</p>
+                <p></p>
+                <p></p>
+
+
+                <h3>Robotic Arm Manipulation</h3>
+                <p>
+                    In order to pick the objects I wanted to use some sorth of color detection and the gpd library (grasping position depth) but due to limited time I placed an April Tag on each object.                    
+                    The robot when the april tag gets detected will get allinged with it an stop in a set distance from it. Moveit cpp was used in order to manipulate the arm and grasp the object.
+                    At Figure 4 you can see some examples of grabing a dice cube.
+                </p>
+                <div class="row">
+
+                <div class="col-lg-6 col-sm-2">
+                    <img src=" ../img/portfolio/sawback/pick_2.gif" class="img-responsive" alt="slam.gif" style="width:100%">
+                </div>
+
+                <div class="col-lg-6 col-sm-2">
+                    <img src=" ../img/portfolio/sawback/pick_1.gif" class="img-responsive" alt="slam.gif" style="width:100%">
+                </div>
+             </div>
+             <p class="text-center">Fig 4 Pick Item.</p>
+             <p></p>
+
+             <p>When the object has being picked from the arm, then based on which object we got we will navigate to the proper location and then place it in a specific container.
+                This container could be a box on top of a table, shelfs or a drawer.
+                More specific for the drawer manipulation because it requires some extra precision to open it, an extra April Tag was used in order to know the exact position of the drawer.
+                For the detection of AprilTag a bumblebee camera was used facing the floor.
+            </p>
+
+
+                <h3>Results</h3>
+                <p></p>
+                <h4 style="font-size:20px">Below we see the project implementation in different scenarios</h4> 
+                <p></p>
+                <p></p>
+
+                <h3 class="text-center">Demonstration of sawback placing an items in shelfs</h3>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/2OBJ_shelfs.gif" class="img-responsive" alt="turtle_slam" style="width:80%"></p>
+                <p class="text-center">Fig Sawback Shelf Manipulation</p>
+                <p></p>
+
+                <h3 class="text-center">Demonstration of sawback placing an item in a box </h3>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/box.gif" class="img-responsive" alt="auto exploration" style="width:80%"></p>
+                <p class="text-center">Fig Sawback Box Container Manipulation</p>
+
+                <p></p>
+                <p></p>
+
+                <h3 class="text-center">Demonstration of sawback opening a drawer. Here the robot will follow these steps.</h3>       
+                
+                <ul style="font-size:20px">
+                    <li>Grab the object and place it on top of the drawer</li>
+                    <li>Place the gripper inside the handle.</li>
+                    <li>Move forward and open the drawer.</li>
+                    <li>Go back and then forward in order to get re-alinged.</li>
+                    <li>Grab the obeject from the top of the drawer.</li>
+                    <li>Place the object inside the drawer.</li>
+                    <li>Move forward set arm positions and then backwards in order to close the drawer.</li>
+                </ul>
+                <p></p>
+                <p></p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/sawback/drawer.gif" class="img-responsive" alt="auto exploration" style="width:80%"></p>
+                <p class="text-center">Fig Sawback Drawer Manipulation</p>
+
+                <p></p>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <p></p>
+                    <form action="https://github.com/jimas95/winter_project" method="get" target="_blank">
+                        <button type="submit" class="btn btn-primary">Check Project on Github</button>
+                     </form>
+                     <p></p>
+                    <button type="button" class="btn btn-primary center" onclick="history.back()">Close Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
