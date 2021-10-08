@@ -7,15 +7,108 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="text-center modal-title">Maze Simulator</h3>
-                <!-- <h4 class="text-center">Augmented Reality | OpenCV  |  Unity  |  Computer Vision  | 3D Tracking | 3D Registration | </h4> -->
+                <!-- <h4 class="text-center"> Simulation | Java  |  Unity  |  Computer Vision  | 3D Tracking | 3D Registration | </h4> -->
             </div>
            
             <!-- Modal body -->
             <div class="modal-body">
                 
-                <p>UNDER CONSTRUCTION</p>
+                                
+                <p>Description</p>
+
+                <p>Being an active member at the <a href="http://robotics-club.upatras.gr/">RoboticsClub</a> as an undergraduate student
+                    I got heavily involved in the world of robotics. In this club, we design and program small robots. To be more specific during my second year in this club we moved to a more advanced robot named Thiseas. With this robot, we participated in Maze Solving competitions(Micromouse).
+                </p>
+                
+                <p>
+                    During the development of this project (micro mouse), I realized that to have a fully functional robot a lot of testing and repetition needs to be done in different scenarios, which is time-consuming and sometimes impossible.
+                </p>
+                    
+                <p>
+                    
+                    To be able to easily debug, visualize and tune our robot I developed, as a side project, a simulator. This Simulator was specifically design and compatible with our robot(Thiseas). The Simulator was developed in java, visualization of information (see figures below), communication via Bluetooth, or executing and simulating the code at the local machine are some of its possibilities.
+                </p>
+
+
+
+                <p>
+                    In more detail about the simulator capabilities:
+                    <ul>
+                        <li>While in online mode the robot is in a real maze environment, after connecting via Bluetooth we can visualize different information (such as sensors) and additional send commands to it.</li>
+                        <li>Offline mode is when the code or part of the code is being executed offline. In this mode, we are feeding the system with data and visualize the results. This is the most important advance of this specific simulator</li>
+                        <li>simulate sensors. The System can either visualize sensor information in 2D space or simulate what those values should be and feed them to the robot system.</li>
+                        <li>PID Tunning. Via Bluetooth communication changing PID gains could be done directly from the simulator</li>
+                        <li>Plots. An important task of the simulator is to provide and display information. So a built-in functionality would give us the ability to select different data to be displayed on a graph. We could specify the numbers of plots, the data being displayed, display more graphs on one plot and change the y axis relevance too.</li>
+                        <li>Commands. The simulator could not only receive information from the real/fake robot it could also send information to is. which turned to be a big advantage while we were still developing the code since we could specify specific tasks and execute specific configurations easily.</li>
+                        <li>Multiple Mazes. Of course, the Simulator could provide over 100 different mazes configurations and the ability to create your maze.</li>
+                        <li>graphics for information. An important task is to be able to visualize information(data) since for a person it is more natural and more understandable.</li>
+                    </ul>
+                </p>
+
+
+                <p>
+                    Some basic information that the Simulator is displaying are :
+                    <ul>
+                        <li>Maze configuration, displayed with Black</li>
+                        <li>Known shells(already explored) displayed with RED</li>
+                        <li>Optimal Path</li>
+                    </ul>
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/simulator/Screenshot_6.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 1 Thiseas Robot</p> 
+
+
+
+                <p>
+                    As the system was becoming more complex the displayed information and the generation of fake data got enchanced with additional :
+                    <ul>
+                        <li>Sensors visualization and generation of fake data</li>
+                        <li>display trajectory path</li>
+                        <li>display both ideal path and odometry of the robot</li>
+                    </ul>
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/simulator/Screenshot_11.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 1 Thiseas Robot</p> 
+     
+
+                <p>
+                    Another advantage/capabilty was the ability to compile single parts of the code and execute/test the fuctionality only of that part.
+                    For example at the figure below we test the Floodfill algorithm (maze exploration). After the execution we can see the frequency of visited cells, 
+                    the final path, or how much of the maze was explored.
+                    Different alforithms Floodfill, wallFollow, or different starting position and heading, 
+                    and most importanly different mazes could be tested with the press of a button ensuring the correct behaviour of the developed code in different scenarios.
+                </p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/simulator/Screenshot_2.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 1 Thiseas Robot</p> 
+     
+
+                <p>
+                    In this figure we see the GUI for tunning our robot. Since PID tunning requires a lot of trys a special 
+                    GUI was created where we can select and display different data(error,ref, etc) at plots and also change the gains of the controllers.
+
+                </p>
+                <p>
+                    Prior to Simulation if I would like to tune the robot I would have to plug it at my Computer set the new gains, attach the battery and repeat the testing.
+                    After the simulation first and most important we can display the results in a graph giving us a better understanding. 
+                    Additionaly we could rapidly change the gains of the controllers and with the push of a button repoeat the test,
+                     transforming the whole experience of a time consuming task to something more "fun" and intresting.
+                </p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/simulator/Screenshot_8.png" class="img-responsive" alt="two_agents.gif" style="width:70%"></p>
+                <p class="text-center">Fig. 1 Thiseas Robot Plots & Tune</p> 
                 
             </div>
+
+
+
+
+
 
             <!-- Modal footer -->
             <div class="modal-footer">
