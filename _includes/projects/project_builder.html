@@ -7,9 +7,141 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="text-center modal-title">Mobile 3D Printer Bot</h3>
-                <h4 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT|</h4>
+                <h4 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Laser Cut | 3D Print</h4>
             </div>
+              <!-- Modal body -->
+              <div class="modal-body">
+                <p class="text-center">
+                <iframe width="525" height="394"
+                src="https://www.youtube.com/embed/DFzjV_SccTI?autoplay=1&mute=1&loop=1">
+                </iframe>
+                </p>
+
+                <h3>Description</h3>       
+                <p>In this project, I assembled a new configuration using turtlebot parts in order
+                    to create a new robot. 
+                    Additionally, this robot is equipped with a custom melting mechanism on which wax will be placed. As the robot is navigating and the wax is dripping from the melting mechanism constructions such as ramps, 
+                    walls and drawings will be created.</p>
+                <p> 
+                    The idea of the project is to make a fully automated mobile 3D printing system where repetition, 
+                    refueling, precision, and safety are the priorities. 
+                    The goal is to create a robot that is reliable and robust and can be used as a tool in reality(as a product), and not just within the margins of a project.
+                    Having that as a goal being able to easily map and then localize the robot's position in a real complex-dynamic environment where people interfere, or the robot starts from a different location or printing is being paused and then resumed are problems that need to be addressed and solved. Also since the melting mechanism is really hot and big lipo batteries are being used safety is also a main concern.
+                </p>
+
+                <h3>Demonstration</h3>        
+                <p>The following video is a demonstration of drawing a face</p>
+                <p class="text-center">
+                    <iframe width="525" height="394"
+                    src="https://www.youtube.com/embed/25Jx5d8m44U?&mute=1&loop=1">
+                    </iframe>
+                </p>
+                <p class="text-center">Draw a emoji face</p>
+
+                
+                <p>At the following video the robot will construct 2 lines and then navigate over them</p>
+                <p class="text-center">
+                    <iframe width="525" height="394"
+                    src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
+                    </iframe>
+                </p>
+                <p class="text-center">Construct 2 lines</p>
+                
+
+ 
+
+
+                <h3>Layout</h3>       
+                
+                <p></p>
+                <h3>Overview</h3>
+                
+                <h3>maping and locilization</h3>        
+                <h3>Cool Down</h3>       
+                <p>The robot is equipped with funs at the front and back to speed up the printing process. The funs drastically decrease the amount of time needed for the wax to cool down, so the builder robot will be able to step on it faster.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/cool_down.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
+                <p class="text-center">Fig. XX Cooling wax with fans</p>
+                
+
+                <h3>Refuell</h3>      
+                <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using moveIT, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/refill_1.gif" alt="refill_1.gif" style="width:100%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/refill_2.gif" alt="refill_2.gif" style="width:100%">
+                    </div>
+                </div>
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/refill_3.gif" alt="refill_3.gif" style="width:100%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/refill_4.gif" alt="refill_4.gif" style="width:100%">
+                    </div>
+                </div>
+                <p class="text-center">Fig. XX Refilling builder robot using a robotic arm</p>
+
+
+
+                <h3>Recycling</h3>        
+                <p>One reason wax is selected as a material is that it can be reused. We can either directly take scrap wax and now use it for printing or recreate the cylinder shape to be used later with the robotic arm.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/recandle.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
+                <p class="text-center">Fig. XX Recycle wax</p>
+                
+                
+                <h3>Safety</h3>    
+                <h4>Battery Safety</h3>    
+                <p>Lipo batteries have a high chance of starting a fire if not treated correctly. So the first measure is that the robot is equipped with a screen (see left image figure XX). The voltage and current are displayed on the screen to monitor the battery's condition. Also, an extra component (see right image figure XX) is connected directly to the battery, checking each cell of it, and if any cell drops its Volt below a certain threshold, an alarm sound will start.</p>
+                
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/VoltageDisplay.png" alt="Snow" style="width:100%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/battCheck.png" alt="Forest" style="width:70%">
+                    </div>
+                </div>
+
             
+                <p class="text-center" >Fig XX Battery Safety</p>
+                <p></p>
+
+
+                <h4>Hot Surface Safety</h3>    
+                <p>For the melting mechanism, a special sticker is placed on it. If the surface of the device is hot, then the sticker appears, indicating that we should not touch it. </p>
+                
+
+                
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/hot_surface.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
+                <p class="text-center">Fig. XX Hot Surface</p>
+                <p></p>
+                <p></p>
+                <h4>Code Safety</h3>    
+                <p>The printing environment is done on a table. The chance of the robot falling from the table and getting damaged was severe, especially while developing this project. Hence a ros service was made that will stop the robot. This service would kill necessary nodes, stop various actions and block cmd velocity, ensuring that the robot will stop moving.</p>
+
+
+                <h3>mechanical disposal mechanism</h3>       
+
+
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <p></p>
+                    <form action="https://github.com/jimas95/construction-plant" method="get" target="_blank">
+                        <button type="submit" class="btn btn-primary">Check Project on Github</button>
+                     </form>
+                     <p></p>
+                    <button type="button" class="btn btn-primary center" onclick="history.back()">Close Project</button>
+                </div>
+            </div>
           
         </div>
     </div>
