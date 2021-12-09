@@ -7,7 +7,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="text-center modal-title">Mobile 3D Printer Bot</h3>
-                <h4 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Laser Cut | 3D Print</h4>
+                <h4 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Arm Manipulation | Laser Cut | 3D Print</h4>
             </div>
               <!-- Modal body -->
               <div class="modal-body">
@@ -63,13 +63,53 @@
 
                 <h3>Overview</h3>                
                 <p></p>
+                
+                <h3>4DOF Robotic Arm Manipulation</h3>        
+                <p>For the manipulation of the arm, Moveit is used. The goal of the arm is to refuel the turtlebuilder with wax. The pick and place positions are considered fixed. However, these positions are changing as the project is being developed, plus we want to be robust. Hence an easy way of tuning the positions has to be made. Since the robot is 4 DOF, polar coordinates are defined on a YAML file plus one more value for orientation. This way, tuning the correct positions with 1-2 iterations is much easier for a human. The pick and place node reads these polar coordinates, translates them to the correct format (cartesian, quaternion), and generates two additional pre-grasping positions for each pick and place. Additionally, the environment ( collision objects) has been added to the Moveit scene plus the candle object, which is being attached and detached from the end effector's arm.</p>
+                <p>Using this implementation, an example of pick and place is below:</p>
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/px100.gif" alt="refill_3.gif" style="width:90%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/px100_rViz.gif" alt="refill_4.gif" style="width:80%">
+                    </div>
+                </div>
+                
                 <h3>Mapping and Localization</h3>        
-                <p></p>
+                <p>The slam toolbox is used for mapping the environment. Using a single launch file at the current implementation, we can easily navigate and create a new map and save it. Making it easy to relocate our construction site to a different place expecting identical behavior.</p>
+                <p>Below is the real environment and the map generated for it:</p>
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                        <img src="../img/portfolio/builder/map_real_ed.png" alt="map" style="width:90%">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../img/portfolio/builder/map_ed.png" alt="map" style="width:52%">
+                    </div>
+                    
+                </div>
+                <p class="text-center">Fig XX Map of real world</p>
+                <p>This project is heavily dependent on repetition since we need to repeat the cycle of refuel-print multiple times for hours. Hence we can not count on odometry since there would be accumulative errors for the position. AMCL algorithm is used for localization by tunning his parameters, such as based more on lidar sensor than the odometry for navigating. It is also important to mention that no external system, such as a camera April tag, defines or corrects our position. In order to help the localization algorithm, Placing in the environment some tubes help improve its performance. After tuning and mapping, the system can be placed in any environment and follow its path reliably for hours. Also, changes in the environment, such as humans moving through it or a misplaced cube, do not affect it, and the accuracy is less than a centimeter.</p>
                 <h3>State Machine</h3>        
                 <p></p>
-                <h3>Simulation</h3>        
-                <p></p>
 
+
+                <h3>Simulation</h3>        
+                
+                
+                <p>a Gazebo world was made similar to the actual environment where various tests were made to confirm the code's resilience to noise and unexpected behaviors. For example, since this project is heavily dependent on repetition, A ros node was implemented that adds odometry noise. Confirming that the accumulative error will not affect the localization algorithm and will always correct the position.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/gazebo_world.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
+                <p class="text-center">Fig XX Gazebo Example </p>
+                
+                
+                
+                <p>Similar to 3D printing, the construction process takes several hours in this project. Therefore before starting a printing process, we need to ensure that the code is correct. Therefore, fake nodes are being used for both robots (robotic arm, builder robot) to rapidly see on rViz where the robot is being commanded to navigate with which direction, etc. Also, markers are essential with colors for different states (print mode on/off) or arrow markers displaying the desired position and direction.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/launch_all.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
+                <p class="text-center">Fig XX Rviz Example </p>
+
+                <p>It is also worth mentioning that using one launch file, we can easily switch between using the actual robot to gazebo simulation or fake nodes or launching only the arm or the builder robot, and everything will be launched correctly with zero error messages or warnings.</p>
 
                 <h3>Refuell</h3>      
                 <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using Moveit, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
@@ -104,7 +144,7 @@
                       <img src="../img/portfolio/builder/heating_bed_desing.gif" alt="power_source" style="width:70%">
                     </div>
                     <div class="col-lg-6">
-                      <img src="../img/portfolio/builder/heating_bed.png" alt="power_source" style="width:40%">
+                      <img src="../img/portfolio/builder/heating_bed.jpeg" alt="power_source" style="width:70%">
                     </div>
                 </div>
                 <p class="text-center" >Fig XX Power Source Control</p>
