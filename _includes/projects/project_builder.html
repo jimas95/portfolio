@@ -48,24 +48,31 @@
                 <p class="text-center">Construct 2 lines</p>
                 
 
- 
-
-
-                <h3>Layout</h3>       
-                
-                <p></p>
-                <h3>Overview</h3>
-                
-                <h3>maping and locilization</h3>        
-                <h3>Cool Down</h3>       
-                <p>The robot is equipped with funs at the front and back to speed up the printing process. The funs drastically decrease the amount of time needed for the wax to cool down, so the builder robot will be able to step on it faster.</p>
+                 
+                <p>At the next video the robot will encounter obstacles that are not able to go over them, hence it will print a ramp in order to over come them.</p>
                 <p class="text-center">
-                    <img class="center" src=" ../img/portfolio/builder/cool_down.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
-                <p class="text-center">Fig. XX Cooling wax with fans</p>
-                
+                    <!-- <iframe width="525" height="394"
+                    src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
+                    </iframe> -->
+                    <img src="../img/portfolio/builder/mountain.JPEG" class="img-responsive" alt="Project 1">
+
+                </p>
+                <p class="text-center">Construct a ramp</p>
+                <p class="text-center">video is not edited yet</p>
+
+
+                <h3>Overview</h3>                
+                <p></p>
+                <h3>Mapping and Localization</h3>        
+                <p></p>
+                <h3>State Machine</h3>        
+                <p></p>
+                <h3>Simulation</h3>        
+                <p></p>
+
 
                 <h3>Refuell</h3>      
-                <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using moveIT, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
+                <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using Moveit, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
                 <div class="row no-gutter">
                     <div class="col-lg-6">
                       <img src="../img/portfolio/builder/refill_1.gif" alt="refill_1.gif" style="width:100%">
@@ -84,6 +91,45 @@
                 </div>
                 <p class="text-center">Fig. XX Refilling builder robot using a robotic arm</p>
 
+            
+
+                <h3>Disposal Mechanism For Melting Wax</h3>       
+                <p>
+                    After various iterations of design and experimenting with different nozzles and heating elements, I decided to create a heating bed made out of aluminum and use a flexible polyimide heater plate as the heating element. I waterjet the aluminum and bend it, giving it a shape similar to an arrow with a slot at the end for dripping the wax. I placed the heating elements and a temperature sensor at the back of this arrow-shaped plate. Aluminum was chosen since it can withstand high temperatures and is suitable for heat transfer. Finally, the bed is sealed with heat-resistant silicone, and at the end of the arrow, a spring is placed blocking big chunks of wax, ensuring that the dripping slot is not blocked.
+                </p>
+
+
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/heating_bed_desing.gif" alt="power_source" style="width:70%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/heating_bed.png" alt="power_source" style="width:40%">
+                    </div>
+                </div>
+                <p class="text-center" >Fig XX Power Source Control</p>
+
+
+                <h3>Power Source Device</h3>        
+                <p>In addition to the heating bed, a power source case was designed and made using a lazer cut machine.</p>
+                <p>In this case we have:</p>
+                <ol style="font-size:16px">
+                    <li>3.3V Relay connected at the Rasp for activating the heating system using ROS.</li>
+                    <li>Temperature display/relay sensor to keep the heating bed within the desired margins and avoid overheating.</li>
+                    <li>Display showing the current Voltage and consumption on the battery for debugging purposes, such as if we draw current and monitor the battery conditions.</li>
+                    <li>Two fans connected in series are placed at the front for a faster cooldown of wax.</li>
+                    <li>on/off switch</li>
+                </ol>
+
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/power_source_design.gif" alt="power_source" style="width:70%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/power_source.gif" alt="power_source" style="width:100%">
+                    </div>
+                </div>
+                <p class="text-center" >Fig XX Power Source Control</p>
 
 
                 <h3>Recycling</h3>        
@@ -91,6 +137,12 @@
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/recandle.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
                 <p class="text-center">Fig. XX Recycle wax</p>
+                
+                <h3>Cool Down</h3>       
+                <p>The robot is equipped with fans at the front and back to speed up the printing process. The fans drastically decrease the amount of time needed for the wax to cool down, so the builder robot will be able to step on it faster.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/cool_down.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
+                <p class="text-center">Fig. XX Cooling wax with fans</p>
                 
                 
                 <h3>Safety</h3>    
@@ -112,7 +164,7 @@
 
 
                 <h4>Hot Surface Safety</h3>    
-                <p>For the melting mechanism, a special sticker is placed on it. If the surface of the device is hot, then the sticker appears, indicating that we should not touch it. </p>
+                <p>For the melting mechanism, a special sticker is placed on it. If the surface of the device is hot, then the sticker appears, indicating that we should not touch it. Also a temperture sensor is being used in order to avoid overheat. </p>
                 
 
                 
@@ -121,13 +173,21 @@
                 <p class="text-center">Fig. XX Hot Surface</p>
                 <p></p>
                 <p></p>
-                <h4>Code Safety</h3>    
+                <h4>Code Safety</h4>    
                 <p>The printing environment is done on a table. The chance of the robot falling from the table and getting damaged was severe, especially while developing this project. Hence a ros service was made that will stop the robot. This service would kill necessary nodes, stop various actions and block cmd velocity, ensuring that the robot will stop moving.</p>
 
 
-                <h3>mechanical disposal mechanism</h3>       
 
 
+
+
+                <h3>Robot Maintance</h3>    
+                <p>The printing process is not ideal, leading the caterpillar treads of the robot to get filled with wax after multiple hours of printing. Although this does not affect the performance of the builder robot, below is an example of self-cleaning the treads using a gun that blows hot air.
+                </p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/self_clean.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
+                <p class="text-center">Fig. XX Self Cleaning</p>
+                <p></p>
 
             </div>
 
