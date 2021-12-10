@@ -6,8 +6,8 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="text-center modal-title">Mobile 3D Printer Bot</h3>
-                <h4 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Arm Manipulation | Laser Cut | 3D Print</h4>
+                <h2 class="text-center modal-title">Mobile 3D Printer Bot</h2>
+                <h3 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Arm Manipulation | Laser Cut | 3D Print</h3>
             </div>
               <!-- Modal body -->
               <div class="modal-body">
@@ -17,7 +17,7 @@
                 </iframe>
                 </p>
 
-                <h3>Description</h3>       
+                <h2>Description</h2>       
                 <p>In this project, I assembled a new configuration using turtlebot parts in order
                     to create a new robot. 
                     Additionally, this robot is equipped with a custom melting mechanism on which wax will be placed. As the robot is navigating and the wax is dripping from the melting mechanism constructions such as ramps, 
@@ -29,7 +29,7 @@
                     Having that as a goal being able to easily map and then localize the robot's position in a real complex-dynamic environment where people interfere, or the robot starts from a different location or printing is being paused and then resumed are problems that need to be addressed and solved. Also since the melting mechanism is really hot and big lipo batteries are being used safety is also a main concern.
                 </p>
 
-                <h3>Demonstration</h3>        
+                <h2>Demonstration</h2>        
                 <p>The following video is a demonstration of drawing a face</p>
                 <p class="text-center">
                     <iframe width="525" height="394"
@@ -61,10 +61,15 @@
                 <p class="text-center">video is not edited yet</p>
 
 
-                <h3>Overview</h3>                
+                <h2>Overview</h2>  
+                <p>Three main pakages where implemented. The package arm is responsible for manipulating the PX100 robotic arm using Moveit. Package builder is the package navigating, mapping, localizing, printing with the differential robot. Those two packages are entirely independent and do not affect each other. Finally, the brain package is the package that launches everything, controls, and commands what action each robot should take and when. </p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/nodes.png" class="img-responsive" alt="node" style="width:35%"></p>
+                <p class="text-center">Fig XX Custom Packages </p>
+                       
                 <p></p>
                 
-                <h3>4DOF Robotic Arm Manipulation</h3>        
+                <h2>4DOF Robotic Arm Manipulation</h2>        
                 <p>For the manipulation of the arm, Moveit is used. The goal of the arm is to refuel the turtlebuilder with wax. The pick and place positions are considered fixed. However, these positions are changing as the project is being developed, plus we want to be robust. Hence an easy way of tuning the positions has to be made. Since the robot is 4 DOF, polar coordinates are defined on a YAML file plus one more value for orientation. This way, tuning the correct positions with 1-2 iterations is much easier for a human. The pick and place node reads these polar coordinates, translates them to the correct format (cartesian, quaternion), and generates two additional pre-grasping positions for each pick and place. Additionally, the environment ( collision objects) has been added to the Moveit scene plus the candle object, which is being attached and detached from the end effector's arm.</p>
                 <p>Using this implementation, an example of pick and place is below:</p>
                 <div class="row no-gutter">
@@ -76,7 +81,7 @@
                     </div>
                 </div>
                 
-                <h3>Mapping and Localization</h3>        
+                <h2>Mapping and Localization</h2>        
                 <p>The slam toolbox is used for mapping the environment. Using a single launch file at the current implementation, we can easily navigate and create a new map and save it. Making it easy to relocate our construction site to a different place expecting identical behavior.</p>
                 <p>Below is the real environment and the map generated for it:</p>
                 <div class="row no-gutter">
@@ -90,11 +95,51 @@
                 </div>
                 <p class="text-center">Fig XX Map of real world</p>
                 <p>This project is heavily dependent on repetition since we need to repeat the cycle of refuel-print multiple times for hours. Hence we can not count on odometry since there would be accumulative errors for the position. AMCL algorithm is used for localization by tunning his parameters, such as based more on lidar sensor than the odometry for navigating. It is also important to mention that no external system, such as a camera April tag, defines or corrects our position. In order to help the localization algorithm, Placing in the environment some tubes help improve its performance. After tuning and mapping, the system can be placed in any environment and follow its path reliably for hours. Also, changes in the environment, such as humans moving through it or a misplaced cube, do not affect it, and the accuracy is less than a centimeter.</p>
-                <h3>State Machine</h3>        
+                
+                
+                <h2>State Machine</h2>        
+                
+                <p>In order to fuse everything together, the creation of a state machine is necessary given that there are multiple robots where each one has its actions, services and they need to work together.</p>
+                
+                <h3>State Machine Main Cycle</h3>
+                <p> The most important state machine is the main cycle(see figure XX).  This cycle, if simplified, is: go print --> cool down --> refill with wax. The idea is that by repeating this cycle multiple times, eventually, a construction will be made. For simplicity, I did not include them on the diagram. However, extra states that handle aborting the cycle mission or stopping the robot and disabling the heating bed have been implemented for safety reasons, and the program will still be able to resume smoothly.</p>
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/cycle_state.png" class="img-responsive" alt="state machine" style="width:35%"></p>
+                <p class="text-center">Fig XX Main Cycle </p>
+                
+                <h3>Navigation Pipeline</h3>
+                <p>Two simple actions have been implemented, path_plan and navigation (see figure XX). </p>
+                <p>Navigation action simply takes a target position as an input and publishes the corresponding cmd vel in order to go at the desired position.</p>
+                <p>
+                    The path plan action calls the navigation action. Path plan has three different modes line, circle, point. A custom goal message has been created, and through that, various settings are being defined for the path planner. For example, if we want to navigate reverse or forward, position, a line's discrete steps or a semi-circle are defined, repeating time, and many more.  Additionally, this action publishes all the rviz messages such as arrows, paths, goal points, etc.
+                    Path plan action is the primary action for navigating the turtlebuilder. In addition, the states of print and cool down from the main cycle are the path plan action with different settings.
+                </p>
+                <p>You can see at figure XX path planning action performing a face print where first eyes are done (setting points) then mouth (setting line) and finaly a sime-circle and a full circle(setting circle)</p>
+
+                <p class="text-center">
+                    <img class="center" src=" ../img/portfolio/builder/pipeline.png" class="img-responsive" alt="state machine" style="width:35%"></p>
+                <p class="text-center">Fig XX Navigation Pipeline</p>  
+
                 <p></p>
 
 
-                <h3>Simulation</h3>        
+                <h3>State Machine Brain</h3>
+                <p>On top of the main cycle state machine, another layer has been created controlling the path plan action. With this state machine, we change the settings of the action and be able to define building constructions. Below are two examples (on debug mode), building a ramp and drawing a face. </p>
+                <div class="row no-gutter">
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/rviz_ramp.gif" alt="rviz_ramp.gif" style="width:100%">
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="../img/portfolio/builder/rviz_face.gif" alt="rviz_face.gif" style="width:93.5%">
+                    </div>
+                </div>
+                <p class="text-center">Fig XX rviz prinnting example </p>
+
+                <h3>Time manager</h3>
+                <p>Last but not least, a time management node was developed to automate and finalize the printing system fully. Before this node, a human played the role of an instructor giving commands such as repeat printing, deciding when to go for refuel, stopping the cool-down process, etc. Adding this extra controller, the system is fully automated, and a human is only responsible for refilling the wax holder and observing the operation.</p>
+
+
+                <h2>Simulation</h2>        
                 
                 
                 <p>a Gazebo world was made similar to the actual environment where various tests were made to confirm the code's resilience to noise and unexpected behaviors. For example, since this project is heavily dependent on repetition, A ros node was implemented that adds odometry noise. Confirming that the accumulative error will not affect the localization algorithm and will always correct the position.</p>
@@ -111,7 +156,7 @@
 
                 <p>It is also worth mentioning that using one launch file, we can easily switch between using the actual robot to gazebo simulation or fake nodes or launching only the arm or the builder robot, and everything will be launched correctly with zero error messages or warnings.</p>
 
-                <h3>Refuell</h3>      
+                <h2>Refuell</h2>      
                 <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using Moveit, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
                 <div class="row no-gutter">
                     <div class="col-lg-6">
@@ -121,6 +166,7 @@
                       <img src="../img/portfolio/builder/refill_2.gif" alt="refill_2.gif" style="width:100%">
                     </div>
                 </div>
+
                 <div class="row no-gutter">
                     <div class="col-lg-6">
                       <img src="../img/portfolio/builder/refill_3.gif" alt="refill_3.gif" style="width:100%">
@@ -133,7 +179,7 @@
 
             
 
-                <h3>Disposal Mechanism For Melting Wax</h3>       
+                <h2>Disposal Mechanism For Melting Wax</h2>       
                 <p>
                     After various iterations of design and experimenting with different nozzles and heating elements, I decided to create a heating bed made out of aluminum and use a flexible polyimide heater plate as the heating element. I waterjet the aluminum and bend it, giving it a shape similar to an arrow with a slot at the end for dripping the wax. I placed the heating elements and a temperature sensor at the back of this arrow-shaped plate. Aluminum was chosen since it can withstand high temperatures and is suitable for heat transfer. Finally, the bed is sealed with heat-resistant silicone, and at the end of the arrow, a spring is placed blocking big chunks of wax, ensuring that the dripping slot is not blocked.
                 </p>
@@ -150,7 +196,7 @@
                 <p class="text-center" >Fig XX Power Source Control</p>
 
 
-                <h3>Power Source Device</h3>        
+                <h2>Power Source Device</h2>        
                 <p>In addition to the heating bed, a power source case was designed and made using a lazer cut machine.</p>
                 <p>In this case we have:</p>
                 <ol style="font-size:16px">
@@ -172,21 +218,21 @@
                 <p class="text-center" >Fig XX Power Source Control</p>
 
 
-                <h3>Recycling</h3>        
+                <h2>Recycling</h2>        
                 <p>One reason wax is selected as a material is that it can be reused. We can either directly take scrap wax and now use it for printing or recreate the cylinder shape to be used later with the robotic arm.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/recandle.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
                 <p class="text-center">Fig. XX Recycle wax</p>
                 
-                <h3>Cool Down</h3>       
+                <h2>Cool Down</h2>       
                 <p>The robot is equipped with fans at the front and back to speed up the printing process. The fans drastically decrease the amount of time needed for the wax to cool down, so the builder robot will be able to step on it faster.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/cool_down.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
                 <p class="text-center">Fig. XX Cooling wax with fans</p>
                 
                 
-                <h3>Safety</h3>    
-                <h4>Battery Safety</h3>    
+                <h2>Safety</h2>    
+                <h3>Battery Safety</h2>    
                 <p>Lipo batteries have a high chance of starting a fire if not treated correctly. So the first measure is that the robot is equipped with a screen (see left image figure XX). The voltage and current are displayed on the screen to monitor the battery's condition. Also, an extra component (see right image figure XX) is connected directly to the battery, checking each cell of it, and if any cell drops its Volt below a certain threshold, an alarm sound will start.</p>
                 
                 <div class="row no-gutter">
@@ -203,7 +249,7 @@
                 <p></p>
 
 
-                <h4>Hot Surface Safety</h3>    
+                <h3>Hot Surface Safety</h2>    
                 <p>For the melting mechanism, a special sticker is placed on it. If the surface of the device is hot, then the sticker appears, indicating that we should not touch it. Also a temperture sensor is being used in order to avoid overheat. </p>
                 
 
@@ -213,7 +259,7 @@
                 <p class="text-center">Fig. XX Hot Surface</p>
                 <p></p>
                 <p></p>
-                <h4>Code Safety</h4>    
+                <h3>Code Safety</h3>    
                 <p>The printing environment is done on a table. The chance of the robot falling from the table and getting damaged was severe, especially while developing this project. Hence a ros service was made that will stop the robot. This service would kill necessary nodes, stop various actions and block cmd velocity, ensuring that the robot will stop moving.</p>
 
 
@@ -221,7 +267,7 @@
 
 
 
-                <h3>Robot Maintance</h3>    
+                <h2>Robot Maintance</h2>    
                 <p>The printing process is not ideal, leading the caterpillar treads of the robot to get filled with wax after multiple hours of printing. Although this does not affect the performance of the builder robot, below is an example of self-cleaning the treads using a gun that blows hot air.
                 </p>
                 <p class="text-center">
