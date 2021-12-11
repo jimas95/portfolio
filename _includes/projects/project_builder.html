@@ -7,7 +7,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h2 class="text-center modal-title">Mobile 3D Printer Bot</h2>
-                <h3 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIT | Arm Manipulation | Laser Cut | 3D Print</h3>
+                <h3 class="text-center"> Python  |  SLAM  | Automation | Design | MoveIt | Arm Manipulation | Laser Cut | 3D Print</h3>
             </div>
               <!-- Modal body -->
               <div class="modal-body">
@@ -18,38 +18,34 @@
                 </p>
 
                 <h2>Description</h2>       
-                <p>In this project, I assembled a new configuration using turtlebot parts in order
-                    to create a new robot. 
-                    This robot is equipped with a custom melting mechanism on which wax will be placed. As the robot is navigating and the wax is dripping from the melting mechanism constructions such as ramps, 
-                    walls and drawings will be created.</p>
+
+                <p> In this project, I assembled a new robotic configuration with different turtlebot parts. 
+                    The robot is equipped with a custom melting mechanism, which can melt different materials such as wax. 
+                    As the robot navigates the environment, the dripping wax from the melting mechanism can print different constructions such as ramps, walls, and drawings.
+                </p>
+
                 <p> 
-                    The idea of the project is to make a fully automated mobile 3D printing system where repetition, 
-                    refueling, precision, and safety are the priorities. For this project i got inspired by this <a href="https://youtu.be/AIrH01N9AsE?t=76">link.</a>
-                     The goal is to create a robot that is reliable and robust and can be used as a tool in reality(as a product), and not just within the margins of a project.
-                    Having that as a goal being able to easily map and then localize the robot's position in a real complex-dynamic environment where people interfere, or the robot starts from a different location or printing is being paused and then resumed are problems that need to be addressed and solved. Also since the melting mechanism is really hot and big lipo batteries are being used safety is also a main concern.
+                    This project was inspired by a Mars habitat building <a href="https://youtu.be/AIrH01N9AsE?t=76"> competition</a>, and aimed at developing a fully autonomous mobile 3D printing system.
+                    One of the goals of this work was to create a robot that is both reliable and robust and can be easily be used as a tool in real applications besides the margins of this project.
+                    Thus, a lot of focus was placed on making the system as robust, precise, safe, and self-sufficient as possible. 
+                    More specifically, the system should easily map and localize the robot's position, be paused and restarted from different initial conditions,    integrate safely with the hot melting mechanism, and perform the printing operations in a real complex-dynamic environment with potential human interference.
                 </p>
 
                 <h2>Demonstration</h2>        
-                <p>The following video is a demonstration of drawing a face</p>
+                <p> In the following videos different usecases of the 3D printing robot are shown, such as drawing a face (Fig.1) contructing two lines which can be mounted (Fig.2), buliding a ramp over some untraversable obstacles (Fig.3).</p>
                 <p class="text-center">
                     <iframe width="525" height="394"
                     src="https://www.youtube.com/embed/25Jx5d8m44U?&mute=1&loop=1">
                     </iframe>
                 </p>
-                <p class="text-center">Draw a emoji face</p>
-
-                
-                <p>At the following video the robot will construct 2 lines and then navigate over them</p>
+                <p class="text-center">The robot is drawing an emoji face</p>
                 <p class="text-center">
                     <iframe width="525" height="394"
                     src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
                     </iframe>
                 </p>
-                <p class="text-center">Construct 2 lines</p>
+                <p class="text-center">Constructing two mountable lines</p>
                 
-
-                 
-                <p>At the next video the robot will encounter obstacles that are not able to go over them, hence it will print a ramp in order to over come them.</p>
                 <p class="text-center">
                     <!-- <iframe width="525" height="394"
                     src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
@@ -57,21 +53,34 @@
                     <img src="../img/portfolio/builder/mountain.JPEG" class="img-responsive" alt="Project 1">
 
                 </p>
-                <p class="text-center">Construct a ramp</p>
-                <p class="text-center">video is not edited yet</p>
-
+                <p class="text-center"> Navigating over untraversable objects by building a ramp from wax</p>
 
                 <h2>Overview</h2>  
-                <p>Three main pakages where implemented. The package arm is responsible for manipulating the PX100 robotic arm using Moveit. Package builder is the package navigating, mapping, localizing, printing with the differential robot. Those two packages are entirely independent and do not affect each other. Finally, the brain package is the package that launches everything, controls, and commands what action each robot should take and when. </p>
+                <p>Three main packages were implemented, namely the <em> arm </em>, the <em> bulider </em>, and the  <em> brain </em> package. 
+                  The <em> arm </em> package is responsible for manipulating the PX100 robotic arm using MoveIt. The <em> builder </em> package inlcudes navigating, mapping, localizing and printing with the differential robot.
+                  These two packages are entirely independent and do not affect each other.
+                  Finally, the <em> brain </em> package is the package that launches everything, controls, and commands what action each robot should take and when. </p>
                 <p class="text-center">
-                    <img class="center" src=" ../img/portfolio/builder/nodes.png" class="img-responsive" alt="node" style="width:35%"></p>
-                <p class="text-center">Fig XX Custom Packages </p>
+                    <img class="center" src=" ../img/portfolio/builder/nodes.png" class="img-responsive" alt="node" style="width:50%"></p>
+                <p class="text-center">Fig. 4. The main architecture of this project.</p>
                        
                 <p></p>
                 
                 <h2>4DOF Robotic Arm Manipulation</h2>        
-                <p>For the manipulation of the arm, Moveit is used. The goal of the arm is to refuel the turtlebuilder with wax. The pick and place positions are considered fixed. However, these positions are changing as the project is being developed, plus we want to be robust. Hence an easy way of tuning the positions has to be made. Since the robot is 4 DOF, polar coordinates are defined on a YAML file plus one more value for orientation. This way, tuning the correct positions with 1-2 iterations is much easier for a human. The pick and place node reads these polar coordinates, translates them to the correct format (cartesian, quaternion), and generates two additional pre-grasping positions for each pick and place. Additionally, the environment ( collision objects) has been added to the Moveit scene plus the candle object, which is being attached and detached from the end effector's arm.</p>
-                <p>Using this implementation, an example of pick and place is below:</p>
+                <p> The manipulation functions of the arm are implemented with MoveIt.
+                    The arm is tasked with refueling the turtle builder with wax.
+                    During operation, the pick and place positions are considered fixed.
+                    However, since these positions are changing through the lifetime of the project, we implemented a simple interface to modify/tune them.
+                    The used arm robot is a 4 DoF arm but MoveIt operates with full 6-dof goal poses, thus the two orientation parameters (roll, pitch) are always fixed.
+                    Furthermore, we also fix the cartesian z parameter since the meltable material (wax) is always picked and placed from the same height.
+                    Our simple interface reads the YAML file, which includes two polar coordinates (r, θ) and the yaw parameter, and converts them to a full 6-dof pose. 
+                    This simple specification makes it easy to find new parameters within 1-2 iterations when changing the environment or setting.
+                    Additionally, the implemented nodes add the environment collision objects to the MoveIt scene, including the candle object, which is being attached and detached from the end effector's arm.
+                    A standard motion planning algorithm (RRTConnect) is used to plan between the calculated start and goal configurations. 
+                </p>
+
+
+                <p>Using this implementation, an example of pick and place is shown below:</p>
                 <div class="row no-gutter">
                     <div class="col-lg-6">
                       <img src="../img/portfolio/builder/px100.gif" alt="refill_3.gif" style="width:90%">
@@ -157,7 +166,7 @@
                 <p>It is also worth mentioning that using one launch file, we can easily switch between using the actual robot to gazebo simulation or fake nodes or launching only the arm or the builder robot, and everything will be launched correctly with zero error messages or warnings.</p>
 
                 <h2>Refuell</h2>      
-                <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using Moveit, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
+                <p>An essential aspect of this project is automation, and human interference should be limited. Hence a robotic arm with 4 DOF was used to refill the robot with candles. A ros service has been implemented in which the robot will stop printing, shut down the melting mechanism, go in front of the arm and refuel its tank with more wax. The arm's trajectory was implemented using MoveIt, where the environment and the current position of the builder robot are added, ensuring the avoidance of colliding with it or any other object. Also, a slider was designed ( using laser cut) where the arm picks the candles from there one by one. A human is only needed to refill the slider.</p>
                 <div class="row no-gutter">
                     <div class="col-lg-6">
                       <img src="../img/portfolio/builder/refill_1.gif" alt="refill_1.gif" style="width:100%">
