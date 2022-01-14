@@ -12,10 +12,11 @@
               <!-- Modal body -->
               <div class="modal-body">
                 <p class="text-center">
-                <iframe width="525" height="394"
-                src="https://www.youtube.com/embed/DFzjV_SccTI?autoplay=1&mute=1&loop=1">
-                </iframe>
+                    <iframe width="525" height="394"
+                    src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
+                    </iframe>
                 </p>
+                <p class="text-center">Fig 1. Constructing two mountable lines</p>
 
                 <h2>Description</h2>       
 
@@ -38,20 +39,15 @@
                     src="https://www.youtube.com/embed/25Jx5d8m44U?&mute=1&loop=1">
                     </iframe>
                 </p>
-                <p class="text-center">The robot is drawing an emoji face</p>
-                <p class="text-center">
-                    <iframe width="525" height="394"
-                    src="https://www.youtube.com/embed/Nv3IgJ5PP84?&mute=1">
-                    </iframe>
-                </p>
-                <p class="text-center">Constructing two mountable lines</p>
+                <p class="text-center">Fig 2. The robot is drawing an emoji face</p>
+
                 <p class="text-center">
                     <iframe width="682" height="512"
                     src="https://www.youtube.com/embed/Dj07slaf6qA?">
                     </iframe>
 
                 </p>
-                <p class="text-center"> Navigating over untraversable objects by building a ramp from wax</p>
+                <p class="text-center">Fig 3. Navigating over untraversable objects by building a ramp from wax</p>
 
                 <h2>Overview</h2>  
                 <p>Three main packages were implemented, namely the <em> arm </em>, the <em> bulider </em>, and the  <em> brain </em> package. 
@@ -60,7 +56,7 @@
                   Finally, the <em> brain </em> package is the package that launches everything, controls, and commands what action each robot should take and when. </p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/nodes.png" class="img-responsive" alt="node" style="width:50%"></p>
-                <p class="text-center">Fig. 4. The main architecture of this project.</p>
+                <p class="text-center">Fig 4. The main architecture of this project.</p>
                        
                 <p></p>
                 
@@ -100,7 +96,7 @@
                     </div>
                     
                 </div>
-                <p class="text-center">Fig XX Map of real world</p>
+                <p class="text-center">Fig 5. Map of real world</p>
                 <p>This project is heavily dependent on repetition since we need to repeat the cycle of refuel-print multiple times for hours. Hence we can not count on odometry since there would be accumulative errors for the position. AMCL algorithm is used for localization by tunning his parameters, such as based more on lidar sensor than the odometry for navigating. It is also important to mention that no external system, such as a camera April tag, defines or corrects our position. In order to help the localization algorithm, Placing in the environment some tubes help improve its performance. After tuning and mapping, the system can be placed in any environment and follow its path reliably for hours. Also, changes in the environment, such as humans moving through it or a misplaced cube, do not affect it, and the accuracy is less than a centimeter.</p>
                 
                 
@@ -109,23 +105,23 @@
                 <p>In order to fuse everything together, the creation of a state machine is necessary given that there are multiple robots where each one has its actions, services and they need to work together.</p>
                 
                 <h3>State Machine Main Cycle</h3>
-                <p> The most important state machine is the main cycle(see figure XX).  This cycle, if simplified, is: go print --> cool down --> refill with wax. The idea is that by repeating this cycle multiple times, eventually, a construction will be made. For simplicity, I did not include them on the diagram. However, extra states that handle aborting the cycle mission or stopping the robot and disabling the heating bed have been implemented for safety reasons, and the program will still be able to resume smoothly.</p>
+                <p> The most important state machine is the main cycle(see figure 6).  This cycle, if simplified, is: go print --> cool down --> refill with wax. The idea is that by repeating this cycle multiple times, eventually, a construction will be made. For simplicity, I did not include them on the diagram. However, extra states that handle aborting the cycle mission or stopping the robot and disabling the heating bed have been implemented for safety reasons, and the program will still be able to resume smoothly.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/cycle_state.png" class="img-responsive" alt="state machine" style="width:35%"></p>
-                <p class="text-center">Fig XX Main Cycle </p>
+                <p class="text-center">Fig 6. Main Cycle </p>
                 
                 <h3>Navigation Pipeline</h3>
-                <p>Two simple actions have been implemented, path_plan and navigation (see figure XX). </p>
+                <p>Two simple actions have been implemented, path_plan and navigation (see figure 7). </p>
                 <p>Navigation action simply takes a target position as an input and publishes the corresponding cmd vel in order to go at the desired position.</p>
                 <p>
                     The path plan action calls the navigation action. Path plan has three different modes line, circle, point. A custom goal message has been created, and through that, various settings are being defined for the path planner. For example, if we want to navigate reverse or forward, position, a line's discrete steps or a semi-circle are defined, repeating time, and many more.  Additionally, this action publishes all the rviz messages such as arrows, paths, goal points, etc.
                     Path plan action is the primary action for navigating the turtlebuilder. In addition, the states of print and cool down from the main cycle are the path plan action with different settings.
                 </p>
-                <p>You can see at figure XX path planning action performing a face print where first eyes are done (setting points) then mouth (setting line) and finaly a sime-circle and a full circle(setting circle)</p>
+                <p>You can see at figure 2 path planning action performing a face print where first eyes are done (setting points) then mouth (setting line) and finaly a sime-circle and a full circle(setting circle)</p>
 
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/pipeline.png" class="img-responsive" alt="state machine" style="width:35%"></p>
-                <p class="text-center">Fig XX Navigation Pipeline</p>  
+                <p class="text-center">Fig 7 Navigation Pipeline</p>  
 
                 <p></p>
 
@@ -140,7 +136,7 @@
                       <img src="../img/portfolio/builder/rviz_face.gif" alt="rviz_face.gif" style="width:93.5%">
                     </div>
                 </div>
-                <p class="text-center">Fig XX rviz prinnting example </p>
+                <p class="text-center">Fig 8. rviz prinnting example </p>
 
                 <h3>Time manager</h3>
                 <p>Last but not least, a time management node was developed to automate and finalize the printing system fully. Before this node, a human played the role of an instructor giving commands such as repeat printing, deciding when to go for refuel, stopping the cool-down process, etc. Adding this extra controller, the system is fully automated, and a human is only responsible for refilling the wax holder and observing the operation.</p>
@@ -152,14 +148,14 @@
                 <p>a Gazebo world was made similar to the actual environment where various tests were made to confirm the code's resilience to noise and unexpected behaviors. For example, since this project is heavily dependent on repetition, A ros node was implemented that adds odometry noise. Confirming that the accumulative error will not affect the localization algorithm and will always correct the position.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/gazebo_world.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
-                <p class="text-center">Fig XX Gazebo Example </p>
+                <p class="text-center">Fig 9. Gazebo Example </p>
                 
                 
                 
                 <p>Similar to 3D printing, the construction process takes several hours in this project. Therefore before starting a printing process, we need to ensure that the code is correct. Therefore, fake nodes are being used for both robots (robotic arm, builder robot) to rapidly see on rViz where the robot is being commanded to navigate with which direction, etc. Also, markers are essential with colors for different states (print mode on/off) or arrow markers displaying the desired position and direction.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/launch_all.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
-                <p class="text-center">Fig XX Rviz Example </p>
+                <p class="text-center">Fig 10. Rviz Example </p>
 
                 <p>It is also worth mentioning that using one launch file, we can easily switch between using the actual robot to gazebo simulation or fake nodes or launching only the arm or the builder robot, and everything will be launched correctly with zero error messages or warnings.</p>
 
@@ -182,7 +178,7 @@
                       <img src="../img/portfolio/builder/refill_4.gif" alt="refill_4.gif" style="width:100%">
                     </div>
                 </div>
-                <p class="text-center">Fig. XX Refilling builder robot using a robotic arm</p>
+                <p class="text-center">Fig 11. Refilling builder robot using a robotic arm</p>
 
             
 
@@ -200,7 +196,7 @@
                       <img src="../img/portfolio/builder/heating_bed.jpeg" alt="power_source" style="width:70%">
                     </div>
                 </div>
-                <p class="text-center" >Fig XX Power Source Control</p>
+                <p class="text-center" >Fig 12. Power Source Control</p>
 
 
                 <h2>Power Source Device</h2>        
@@ -222,25 +218,25 @@
                       <img src="../img/portfolio/builder/power_source.gif" alt="power_source" style="width:100%">
                     </div>
                 </div>
-                <p class="text-center" >Fig XX Power Source Control</p>
+                <p class="text-center" >Fig 13 Power Source Control</p>
 
 
                 <h2>Recycling</h2>        
                 <p>One reason wax is selected as a material is that it can be reused. We can either directly take scrap wax and now use it for printing or recreate the cylinder shape to be used later with the robotic arm.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/recandle.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
-                <p class="text-center">Fig. XX Recycle wax</p>
+                <p class="text-center">Fig. 14 Recycle wax</p>
                 
                 <h2>Cool Down</h2>       
                 <p>The robot is equipped with fans at the front and back to speed up the printing process. The fans drastically decrease the amount of time needed for the wax to cool down, so the builder robot will be able to step on it faster.</p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/cool_down.gif" class="img-responsive" alt="Pen recognition" style="width:80%"></p>
-                <p class="text-center">Fig. XX Cooling wax with fans</p>
+                <p class="text-center">Fig. 15 Cooling wax with fans</p>
                 
                 
                 <h2>Safety</h2>    
                 <h3>Battery Safety</h2>    
-                <p>Lipo batteries have a high chance of starting a fire if not treated correctly. So the first measure is that the robot is equipped with a screen (see left image figure XX). The voltage and current are displayed on the screen to monitor the battery's condition. Also, an extra component (see right image figure XX) is connected directly to the battery, checking each cell of it, and if any cell drops its Volt below a certain threshold, an alarm sound will start.</p>
+                <p>Lipo batteries have a high chance of starting a fire if not treated correctly. So the first measure is that the robot is equipped with a screen (see left image figure 16). The voltage and current are displayed on the screen to monitor the battery's condition. Also, an extra component (see right image figure 16) is connected directly to the battery, checking each cell of it, and if any cell drops its Volt below a certain threshold, an alarm sound will start.</p>
                 
                 <div class="row no-gutter">
                     <div class="col-lg-6">
@@ -252,7 +248,7 @@
                 </div>
 
             
-                <p class="text-center" >Fig XX Battery Safety</p>
+                <p class="text-center" >Fig 16 Battery Safety</p>
                 <p></p>
 
 
@@ -263,7 +259,7 @@
                 
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/hot_surface.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
-                <p class="text-center">Fig. XX Hot Surface</p>
+                <p class="text-center">Fig. 17 Hot Surface</p>
                 <p></p>
                 <p></p>
                 <h3>Code Safety</h3>    
@@ -279,7 +275,7 @@
                 </p>
                 <p class="text-center">
                     <img class="center" src=" ../img/portfolio/builder/self_clean.gif" class="img-responsive" alt="Pen recognition" style="width:35%"></p>
-                <p class="text-center">Fig. XX Self Cleaning</p>
+                <p class="text-center">Fig. 18 Self Cleaning</p>
                 <p></p>
 
             </div>
